@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+typedef struct {
+    double x,y;
+}Nokta_2D;
+
+int main()
+{
+    Nokta_2D Nokta[100]; 
+    int N,i,j;
+    double euclid,max_x1,max_x2,max_y1,max_y2;
+
+    printf("Nokta sayisi:\t");
+    scanf("%d",&N);
+
+    for(i=0;i<N;i++){
+        printf("\n%d. nokta: ",i+1);
+        scanf("%lf",&Nokta[i].x);
+        scanf("%lf",&Nokta[i].y);
+    }
+
+    euclid = 0;
+    for(i=0,j=0;i<N;i++,j++){
+        for(j=1;j<N;j++){
+            if(sqrt(pow(Nokta[i].x-Nokta[j].x,2)+(pow(Nokta[i].y-Nokta[j].y,2)))>euclid)
+            {
+                euclid = sqrt(pow(Nokta[i].x-Nokta[j].x,2)+(pow(Nokta[i].y-Nokta[j].y,2)));
+                max_x1 = Nokta[i].x;
+                max_x2 = Nokta[j].x;
+                max_y1 = Nokta[i].y;
+                max_y2 = Nokta[j].y;  
+            }}}
+        
+    printf("\nBirbirine en uzak olan noktalar : (%.lf, %.lf) - (%.lf, %.lf)",max_x1,max_y1,max_x2,max_y2);
+    printf("\nNoktalar arasi euclid mesafesi : %2.3lf",euclid);
+
+    return 0;
+}
